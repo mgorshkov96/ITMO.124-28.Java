@@ -7,8 +7,8 @@ public class Main {
         Calculator.addition(4.65d,0.23d);
         Calculator.addition(90000000L,123456789L);
         Calculator.division(18,0);
-        Calculator.division(120d,20d);
-        Calculator.division(90000000L,30000000L);
+        Calculator.division(120d,17d);
+        Calculator.division(90000000L,40000000L);
         Calculator.multiplication(5,5);
         Calculator.multiplication(4.65d,0.23d);
         Calculator.multiplication(90000000L,123456789L);

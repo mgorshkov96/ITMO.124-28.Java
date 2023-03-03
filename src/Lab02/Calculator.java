@@ -17,32 +17,32 @@ public class Calculator {
     }
 
     public static void division(int firstNumber, int secondNumber){
-        try{
-            int answer = firstNumber/secondNumber;
+        if (secondNumber != 0){
+            double answer = (double)firstNumber/(double)secondNumber;
             System.out.println(firstNumber + " / " + secondNumber + " = " + answer);
         }
-        catch(ArithmeticException ex){
-            System.out.println("Ошибка: " + ex.getMessage());
+        else {
+            System.out.println("Ошибка: делить на ноль нельзя");
         }
     }
 
     public static void division(double firstNumber, double secondNumber){
-        try{
+        if (secondNumber != 0){
             double answer = firstNumber/secondNumber;
             System.out.println(firstNumber + " / " + secondNumber + " = " + answer);
         }
-        catch(ArithmeticException ex){
-            System.out.println("Ошибка: " + ex.getMessage());
+        else {
+            System.out.println("Ошибка: делить на ноль нельзя");
         }
     }
 
     public static void division(long firstNumber, long secondNumber){
-        try{
-            long answer = firstNumber/secondNumber;
+        if (secondNumber != 0){
+            double answer = (double)firstNumber/(double)secondNumber;
             System.out.println(firstNumber + " / " + secondNumber + " = " + answer);
         }
-        catch(ArithmeticException ex){
-            System.out.println("Ошибка: " + ex.getMessage());
+        else {
+            System.out.println("Ошибка: делить на ноль нельзя");
         }
     }
 
