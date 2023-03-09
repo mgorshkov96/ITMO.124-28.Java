@@ -10,18 +10,20 @@ public class Program {
         threeOrFiveOrBoth();
 
         System.out.println("## Part1Ex3");
-        checkSum(5, 10, 15);
-        checkSum(5, 10, 16);
+        System.out.println(checkSum(5, 10, 15));
+        System.out.println(checkSum(5, 10, 16));
 
         System.out.println("## Part1Ex4");
-        checkInequality(5, 10, 15);
-        checkInequality(5, 15, 10);
+        System.out.println(checkInequality(5, 10, 15));
+        System.out.println(checkInequality(5, 15, 10));
 
         System.out.println("## Part1Ex5");
-        isThreeContained();
+        int[] myArray = {2, 3, 5, 8, 9, 568, 999, 3};
+        System.out.println(isThreeContained(myArray));
 
         System.out.println("## Part1Ex6");
-        isThreeOreOneContained();
+        int[] myArray2 = {2, 3, 5, 8, 9, 568, 999, 3, 1, 2, 0, 1985};
+        System.out.println(isThreeOreOneContained(myArray2));
 
         System.out.println("## Part2Ex1");
         int[] sortedArray = {1, 2, 2, 3, 4, 6, 9, 11, 11, 14};
@@ -52,57 +54,59 @@ public class Program {
     }
 
     public static void threeOrFiveOrBoth(){
-        StringBuilder three = new StringBuilder("Делится на 3: ");
-        StringBuilder five = new StringBuilder("Делится на 5: ");
-        StringBuilder both = new StringBuilder("Делится на 3 и на 5 : ");
-
+        System.out.print("Делится на 3: ");
         for (int i = 1; i <= 100; i++){
             if (i % 3 == 0 && i % 5 != 0){
-                three.append(Integer.toString(i) + ", ");
-            }
-            else if (i % 3 != 0 && i % 5 == 0){
-                five.append(Integer.toString(i) + ", ");
-            }
-            else if (i % 3 == 0 && i % 5 == 0){
-                both.append(Integer.toString(i) + ", ");
+                System.out.print(i + ", ");
             }
         }
+        System.out.println();
 
-        System.out.println(three);
-        System.out.println(five);
-        System.out.println(both);
+        System.out.print("Делится на 5: ");
+        for (int i = 1; i <= 100; i++){
+            if (i % 3 != 0 && i % 5 == 0){
+                System.out.print(i + ", ");
+            }
+        }
+        System.out.println();
+
+        System.out.print("Делится на 3 и на 5: ");
+        for (int i = 1; i <= 100; i++){
+            if (i % 3 == 0 && i % 5 == 0){
+                System.out.print(i + ", ");
+            }
+        }
+        System.out.println();
     }
 
-    public static void checkSum(int firstNumber, int secondNumber, int thirdNumber){
+    public static Boolean checkSum(int firstNumber, int secondNumber, int thirdNumber){
         if (firstNumber + secondNumber == thirdNumber){
-            System.out.println("Сумма первых двух чисел равна третьему");
+            return true;
         }
         else {
-            System.out.println("Сумма первых двух чисел не равна третьему");
+            return false;
         }
     }
 
-    public static void checkInequality(int firstNumber, int secondNumber, int thirdNumber){
+    public static Boolean checkInequality(int firstNumber, int secondNumber, int thirdNumber){
         if (secondNumber > firstNumber && thirdNumber > secondNumber){
-            System.out.println("Условие неравенства выполняется");
+            return true;
         }
         else{
-            System.out.println("Условие неравенства не выполняется");
+            return false;
         }
     }
 
-    public static void isThreeContained(){
-        int[] ints = {2, 3, 5, 8, 9, 568, 999, 3};
+    public static Boolean isThreeContained(int[] ints){
         System.out.println("array: " + Arrays.toString(ints));
         if (ints[0] == 3 || ints[ints.length - 1] == 3){
-            System.out.println("True");
+            return true;
         } else {
-            System.out.println("False");
+            return false;
         }
     }
 
-    public static void isThreeOreOneContained(){
-        int[] ints = {2, 3, 5, 8, 9, 568, 999, 3, 1, 2, 0, 1985};
+    public static Boolean isThreeOreOneContained(int[] ints){
         Boolean result = false;
         for (int number : ints){
             if (number == 1 || number == 3){
@@ -110,7 +114,7 @@ public class Program {
                 break;
             }
         }
-        System.out.println("Результат: " + Boolean.toString(result));
+        return result;
     }
 
     public static void checkSortArray(int[] ints){
