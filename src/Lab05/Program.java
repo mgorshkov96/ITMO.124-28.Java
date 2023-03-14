@@ -23,8 +23,10 @@ public class Program {
                 "Бяка");
 
         System.out.println("## Exercise4");
-        checkSubstring("Вышел зайчик погулять", "Зай");
-        checkSubstring("Шла Саша по шоссе и сосала сушку", "Са");
+        int checkRabbit = checkSubstring("Вышел зайчик погулять", "Зай");
+        System.out.println("Подстрока входит в строку " + checkRabbit + " раз(а)");
+        int checkSasha = checkSubstring("Шла Саша по шоссе и сосала сушку", "Са");
+        System.out.println("Подстрока входит в строку " + checkSasha + " раз(а)");
 
         System.out.println("## Exercise5");
         String testString = "This is a test string";
@@ -59,7 +61,7 @@ public class Program {
         System.out.println(string.toLowerCase().replaceAll(substring.toLowerCase(), "[вырезано цензурой]"));
     }
 
-    public static void checkSubstring(String string, String substring){
+    public static int checkSubstring(String string, String substring){
 
         char[] stringChars = string.toLowerCase().replaceAll(substring.toLowerCase(), "1").toCharArray();
         int counter = 0;
@@ -68,8 +70,7 @@ public class Program {
                 counter++;
             }
         }
-        System.out.println("Подстрока " + '"' + substring + '"' + " входит в строку " + '"' + string + '"' +
-                " " + counter + " раз(а)");
+        return counter;
     }
 
     public static String invertWords(String string){
