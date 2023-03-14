@@ -11,7 +11,8 @@ public class Program {
                 "особенности картины в целом, однако конкретные выводы, разумеется, объединены в целые кластеры " +
                 "себе подобных. Для современного мира сплочённость команды профессионалов играет важную роль в " +
                 "формировании переосмысления внешнеэкономических политик.";
-        longestWord(exampleString);
+        String word = longestWord(exampleString);
+        System.out.println("Самое длинное слово: " + word);
 
         System.out.println("## Exercise2");
         checkPalindrome("каРтошка ");
@@ -26,10 +27,12 @@ public class Program {
         checkSubstring("Шла Саша по шоссе и сосала сушку", "Са");
 
         System.out.println("## Exercise5");
-        invertWords("This is a test string");
+        String testString = "This is a test string";
+        System.out.println("Исходная строка: " + testString);
+        System.out.println("Инвертированная строка: " + invertWords(testString));
     }
 
-    public static void longestWord(String string){
+    public static String longestWord(String string){
         String result = "";
         String cleanString = string.replaceAll("[!\"#$%&'()*+,-./:;<=>?\\[\\]^_`{|}~]", "");
         String[] words = cleanString.split(" ");
@@ -38,28 +41,17 @@ public class Program {
                 result = word;
             }
         }
-        System.out.println("Самое длинное слово: " + result);
+        return result;
     }
 
     public static void checkPalindrome(String string){
-        char[] stringChars = string.trim().toLowerCase().toCharArray();
-        char[] reverseStringChars = new char[stringChars.length];
+        StringBuilder reverseString = new StringBuilder(string);
+        reverseString.reverse();
 
-        for (int i = 0, j = stringChars.length - 1; i < stringChars.length; i++, j--){
-            reverseStringChars[j] = stringChars[i];
-        }
-
-        int counter = 0;
-        for (int i = 0; i < stringChars.length; i++){
-            if (stringChars[i] != reverseStringChars[i]){
-                counter++;
-            }
-        }
-
-        if (counter == 0){
-            System.out.println(string.trim().toLowerCase() + " - полиндром");
+        if (string.equalsIgnoreCase(String.valueOf(reverseString))){
+            System.out.println(string + " - полиндром");
         } else {
-            System.out.println(string.trim().toLowerCase() + " - не полиндром");
+            System.out.println(string + " - не полиндром");
         }
     }
 
@@ -80,7 +72,7 @@ public class Program {
                 " " + counter + " раз(а)");
     }
 
-    public static void invertWords(String string){
+    public static String invertWords(String string){
         String[] stringChars = string.split(" ");
         StringBuilder result = new StringBuilder();
 
@@ -91,8 +83,6 @@ public class Program {
             }
             result.append(" ");
         }
-
-        System.out.println("Исходная строка: " + string);
-        System.out.println("Инвертированная строка: " + String.valueOf(result).trim());
+        return String.valueOf(result).trim();
     }
 }
