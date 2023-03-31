@@ -44,11 +44,11 @@ public class Program {
         for (int i =0; i < 100; i++){
             Thread t = new Thread (new CounterThread(counter));
             t.start();
-        }
-        try {
-            Thread.currentThread().sleep(100);
-        } catch (InterruptedException e){
-            e.printStackTrace();
+            try {
+                t.join();
+            } catch (InterruptedException e){
+                e.printStackTrace();
+            }
         }
     }
 
