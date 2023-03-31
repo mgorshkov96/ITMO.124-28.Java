@@ -1,7 +1,9 @@
 package Lab11;
 
+import java.util.concurrent.CountDownLatch;
+
 public class Program {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         System.out.println("##Exercise1");
         threadCounter();
 
@@ -39,17 +41,18 @@ public class Program {
         }
     }
 
-    public static void startCounter(Counter counter){
-
+    public static void startCounter(Counter counter) {
+        CountDownLatch latchCounter = new CountDownLatch(100);
         for (int i =0; i < 100; i++){
-            Thread t = new Thread (new CounterThread(counter));
+            Thread t = new Thread (new CounterThread(counter, latchCounter));
             t.start();
-            try {
-                t.join();
-            } catch (InterruptedException e){
-                e.printStackTrace();
-            }
         }
+        try {
+            latchCounter.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public static void startTreadNames(){
